@@ -9,8 +9,8 @@ import keytar from 'keytar-prebuild';
 import ChildProcess from 'child_process';
 import assert from 'assert';
 import { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray, dialog } from 'electron';
-import mainMenu from './menu/mainMenu';
-import contextMenu from './menu/contextMenu';
+import setupMainMenu from './menu/setupMainMenu';
+import setupContextMenu from './menu/setupContextMenu';
 
 const localVersion = app.getVersion();
 
@@ -98,7 +98,7 @@ function openItem(fullPath) {
 /*
  * Quits by first killing the daemon, the calling quitting for real.
  */
-export function safeQuit() {
+function safeQuit() {
   minimize = false;
   app.quit();
 }
@@ -163,6 +163,8 @@ function createWindow() {
     window.webContents.openDevTools();
   }
   window.loadURL(rendererURL);
+  setupMainMenu();
+  setupContextMenu(window);
   if (openURI) {
     // We stored and received a URI that an external app requested before we had a window object
     window.webContents.on('did-finish-load', () => {
@@ -231,8 +233,6 @@ function createWindow() {
       }
     );
   });
-
-  mainMenu();
 
   return window;
 }
@@ -552,5 +552,3 @@ process.on('uncaughtException', error => {
   console.error(error);
   safeQuit();
 });
-
-export { contextMenu };
