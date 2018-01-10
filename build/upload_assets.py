@@ -21,7 +21,7 @@ def get_asset_filename():
     if system == 'Darwin':
         return glob.glob(this_dir + '/../dist/LBRY*.dmg')[0]
     elif system == 'Linux':
-        return glob.glob(this_dir + '/../dist/LBRY*.deb')[0]
+        return glob.glob(this_dir + '/../dist/LBRY*.appimage')[0]
     elif system == 'Windows':
         return glob.glob(this_dir + '/../dist/LBRY*.exe')[0]
     else:
