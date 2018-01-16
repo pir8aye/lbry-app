@@ -108,7 +108,7 @@ export const selectNavLinks = createSelector(
         active: page === 'wallet',
       },
       {
-        label: 'Send Credits',
+        label: 'Send & Recieve',
         path: '/send',
         active: page === 'send',
       },
@@ -116,6 +116,16 @@ export const selectNavLinks = createSelector(
         label: 'Get Credits',
         path: '/getcredits',
         active: page === 'getcredits',
+      },
+      {
+        label: 'Rewards',
+        path: '/rewards',
+        active: page === 'rewards',
+      },
+      {
+        label: 'My Transactions',
+        path: '/history',
+        active: page === 'history',
       },
     ];
 
@@ -125,29 +135,40 @@ export const selectNavLinks = createSelector(
           label: 'Explore',
           path: '/discover',
           active: page === 'discover',
+          icon: 'compass',
         },
         {
           label: 'Subscriptions',
           path: '/subscriptions',
           active: page === 'subscriptions',
+          icon: 'at',
         },
       ],
       secondary: [
         {
           label: 'Wallet',
-          path: walletLink || '/wallet', // need to do something speical here,
-          active: page === 'wallet' || walletSubLinks.find(({ path }) => page === path.slice(1)),
+          path: walletLink || '/wallet',
+          active: page === 'wallet' || !!walletSubLinks.find(({ path }) => page === path.slice(1)),
           subLinks: walletSubLinks,
+          icon: 'bank',
+        },
+        {
+          label: 'Publish',
+          path: '/publish',
+          active: page === 'publish',
+          icon: 'cloud-upload',
         },
         {
           label: 'Settings',
           path: '/settings',
           active: page === 'settings',
+          icon: 'gear',
         },
         {
           label: 'Help',
           path: '/help',
           active: page === 'help',
+          icon: 'question',
         },
       ],
     };

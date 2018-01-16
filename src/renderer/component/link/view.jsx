@@ -79,10 +79,10 @@ const Button = (props: Props) => {
 
   const content = (
     <React.Fragment>
-      {icon && <Icon icon={icon} fixed />}
+      {icon && <Icon icon={icon} fixed padded />}
       {label && <span className="btn__label">{label}</span>}
       {children && children}
-      {iconRight && <Icon icon={iconRight} fixed />}
+      {iconRight && <Icon icon={iconRight} fixed padded />}
     </React.Fragment>
   );
 

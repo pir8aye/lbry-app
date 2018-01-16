@@ -95,6 +95,10 @@ button {
   font-family: inherit;
 }
 
+ul {
+  list-style-type: none;
+}
+
 /*
 */
 .page {
@@ -111,40 +115,7 @@ button {
   grid-area: nav;
   background-color: #f3f3f3;
   box-shadow: inset var(--box-shadow-layer);
-
-  ul {
-    list-style-type: none;
-
-    &.nav__primary {
-      //TODO: don't like this. Grid?
-      padding-top: $spacing-vertical * 3;
-    }
-
-    &.nav__secondary {
-    }
-  }
-
-  li.nav__link {
-    padding: 5px $spacing-vertical * 2/3;
-    font-weight: bold;
-  }
-
-  li.nav__primary-link {
-
-
-    &.nav__primary-link--active {
-      color: red;
-    }
-  }
-
-  li.nav__sub-link {
-    padding: 5px $spacing-vertical * 2/3;
-    font-size: .8em;
-
-    &.nav__sub-link--active {
-      color: red;
-    }
-  }
+  padding-top: $spacing-vertical;
 
   hr {
     width: 40px;
@@ -156,9 +127,26 @@ button {
 .nav__actions-top {
   display: flex;
   justify-content: space-between;
-  height: var(--header-height);
   align-items: center;
-  padding: 0 5px;
+  padding: 5px;
+}
+
+.nav__primary {
+  padding-top: $spacing-vertical * 3;
+}
+
+.nav__link--active {
+  color: red;
+}
+
+.nav__link {
+  padding: 5px 0 $spacing-vertical * 2/3 $spacing-vertical * 2/3;
+  font-weight: bold;
+}
+
+.nav__sub-link {
+  padding: 5px $spacing-vertical * 2/3;
+  font-size: 0.8em;
 }
 
 .header {
@@ -210,7 +198,6 @@ button {
 .wunderbar__active-suggestion {
   background-color: #a3ffb0;
 }
-
 
 /*
   Page content
