@@ -118,6 +118,8 @@ const isSecondInstance = app.makeSingleInstance(argv => {
 
     if (rendererWindow.isMinimized()) rendererWindow.restore();
     rendererWindow.focus();
+  } else {
+    deepLinkingURI = URI;
   }
 });
 
