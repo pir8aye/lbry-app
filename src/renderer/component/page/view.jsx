@@ -36,9 +36,11 @@ const Page = (props: Props) => {
   const { pageTitle, children } = props;
   return (
     <main className="main">
-      <div className="page__header">
-        {pageTitle && <h1 className="page__title">{pageTitle}</h1>}
-      </div>
+      {pageTitle && (
+        <div className="page__header">
+          {pageTitle && <h1 className="page__title">{pageTitle}</h1>}
+        </div>
+      )}
       {children}
     </main>
   );

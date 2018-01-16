@@ -208,6 +208,10 @@
   width: 100%;
   min-width: var(--card-small-width);
   padding-top: $spacing-vertical;
+
+  &:first-of-type {
+    padding-top: $spacing-vertical * 2/3;
+  }
 }
 
 .card-row__header {

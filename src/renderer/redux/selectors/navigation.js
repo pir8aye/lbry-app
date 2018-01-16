@@ -54,24 +54,20 @@ export const selectPageTitle = createSelector(
         }
         return parts.join('?');
       }
-      case 'discover':
-        return __('Explore New Content');
-      case 'subscriptions':
-        return __('Your Subscriptions');
-      case 'wallet':
-        return __('Your Wallet');
-      case 'settings':
-        return __('Settings');
-      case 'help':
-        return __('Help');
-      case 'send':
-        return __('Send LBRY Credits');
-      case 'getcredits':
-        return __('Get LBRY Credits');
-      case false:
-      case null:
-      case '':
-        return '';
+      // case 'discover':
+      //   return __('Explore New Content');
+      // case 'subscriptions':
+      //   return __('Your Subscriptions');
+      // case 'wallet':
+      //   return __('Your Wallet');
+      // case 'settings':
+      //   return __('Settings');
+      // case 'help':
+      //   return __('Help');
+      // case 'send':
+      //   return __('Send LBRY Credits');
+      // case 'getcredits':
+      //   return __('Get LBRY Credits');
       default:
         return '';
     }
