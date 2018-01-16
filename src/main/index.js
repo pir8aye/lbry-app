@@ -63,7 +63,7 @@ app.on('activate', () => {
 
 app.on('will-quit', () => {
   isQuitting = true;
-  if (daemon !== null) daemon.quit();
+  if (daemon) daemon.quit();
 });
 
 // https://electronjs.org/docs/api/app#event-will-finish-launching
@@ -71,7 +71,7 @@ app.on('will-finish-launching', () => {
   // Protocol handler for macOS
   app.on('open-url', (event, URL) => {
     event.preventDefault();
-    if (rendererWindow !== null) {
+    if (rendererWindow) {
       rendererWindow.webContents.send('open-uri-requested', URL);
       if (rendererWindow.isMinimized()) rendererWindow.restore();
       rendererWindow.focus();
@@ -98,7 +98,7 @@ ipcMain.on('set-auth-token', (event, token) => {
 process.on('uncaughtException', error => {
   dialog.showErrorBox('Error Encountered', `Caught error: ${error}`);
   isQuitting = true;
-  if (daemon !== null) daemon.quit();
+  if (daemon) daemon.quit();
   app.exit(1);
 });
 
@@ -113,7 +113,7 @@ const isSecondInstance = app.makeSingleInstance(argv => {
     URI = argv[1].replace(/\/$/, '').replace('/#', '#');
   }
 
-  if (rendererWindow !== null) {
+  if (rendererWindow) {
     rendererWindow.webContents.send('open-uri-requested', URI);
 
     if (rendererWindow.isMinimized()) rendererWindow.restore();
