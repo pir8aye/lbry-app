@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--header-bg);
-  padding: 0 $spacing-vertical * 2/3;
+  padding: $spacing-vertical $spacing-vertical * 2/3;
+
   margin-top: $spacing-vertical;
 }
 
@@ -15,7 +15,7 @@
 .header__wunderbar {
   flex: 1;
   min-width: 175px;
-  overflow: hidden;
+  overflow: visible;
   white-space: nowrap;
   text-overflow: ellipsis;
   height: 100%;
@@ -25,25 +25,32 @@
 }
 
 .wunderbar__input {
-  height: 50%;
+  height: 30px;
   width: 100%;
   color: var(--search-color);
+  background-color: var(--search-bg-color);
+  box-shadow: var(--box-shadow-layer);
   padding: 10px;
-  background-color: #f3f3f3;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 0.9em;
 
   &:focus {
     // TODO: focus style
+    box-shadow: var(--search-active-shadow);
+    box-shadow: 0 6px 9px -2px #ccc;
   }
 }
 
 .wunderbar__suggestion {
-  padding: 5px;
+  padding: 10px;
   background-color: var(--header-bg);
   cursor: pointer;
+
+  &:not(:first-of-type) {
+    border-top: 1px solid var(--color-divider);
+  }
 }
 
 .wunderbar__active-suggestion {
-  background-color: #a3ffb0;
+  background-color: var(--color-secondary);
 }

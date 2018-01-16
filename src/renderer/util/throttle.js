@@ -25,6 +25,7 @@ export default function throttle(func, wait, options = {}) {
   };
 
   const throttled = function throttled(...funcArgs) {
+    console.log('throttled');
     const now = getNow();
 
     if (!previous && options.leading === false) previous = now;

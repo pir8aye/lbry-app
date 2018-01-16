@@ -113,8 +113,7 @@ ul {
 
 .nav {
   grid-area: nav;
-  background-color: #f3f3f3;
-  box-shadow: inset var(--box-shadow-layer);
+  background-color: var(--color-nav-bg);
   padding-top: $spacing-vertical;
 
   hr {
@@ -154,7 +153,6 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--header-bg);
   padding: 0 $spacing-vertical * 2/3;
 }
 
@@ -208,7 +206,8 @@ ul {
 }
 
 .main {
-  padding: 0 $spacing-vertical * 2/3;
+  // padding: 0 $spacing-vertical * 2/3;
+  padding: 0;
 }
 
 .main--no-padding {

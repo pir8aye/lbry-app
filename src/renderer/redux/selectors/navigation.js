@@ -88,7 +88,7 @@ export const selectNavLinks = createSelector(
     if (page === 'wallet' || page === 'send' || page === 'getcredits') {
       walletLink = '/wallet';
     } else {
-      for (var i = 0; i < previousStack.length; i += 1) {
+      for (let i = 0; i < previousStack.length; i += 1) {
         const currentStackItem = previousStack[i];
         if (
           currentStackItem.path === '/wallet' ||

@@ -3,6 +3,7 @@ import React from 'react';
 import lbryuri from 'lbryuri';
 import classnames from 'classnames';
 import Autocomplete from './internal/autocomplete';
+import throttle from 'util/throttle';
 
 type Props = {
   updateSearchQuery: string => void,
@@ -21,6 +22,7 @@ class WunderBar extends React.PureComponent<Props> {
     (this: any).handleSubmit = this.handleSubmit.bind(this);
     (this: any).handleChange = this.handleChange.bind(this);
     (this: any).focus = this.focus.bind(this);
+    (this: any).updateAutoComplete = throttle(this.getSTuff, 750);
     this.input = undefined;
   }
 
@@ -31,6 +33,12 @@ class WunderBar extends React.PureComponent<Props> {
     const { value } = e.target;
 
     updateSearchQuery(value);
+    this.updateAutoComplete(value);
+  }
+
+  // thottled by 100ms
+  getSTuff(value: string) {
+    const { getSearchSuggestions } = this.props;
     getSearchSuggestions(value);
   }
 

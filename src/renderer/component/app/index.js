@@ -1,9 +1,14 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import {
   selectPageTitle,
   selectHistoryIndex,
   selectActiveHistoryEntry,
+} from 'redux/selectors/navigation';
+import {
+  selectIsBackDisabled,
+  selectIsForwardDisabled,
+  selectCurrentPage,
+  selectNavLinks,
 } from 'redux/selectors/navigation';
 import { selectUser } from 'redux/selectors/user';
 import { doAlertError } from 'redux/actions/app';

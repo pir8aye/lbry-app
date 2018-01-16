@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from 'component/link';
 import classnames from 'classnames';
+
 const NavigationElements = props => {
-  const { title, navigate, back, forward, isBackDisabled, isForwardDisabled, navLinks } = props;
+  const { pageTitle, navigate, back, forward, isBackDisabled, isForwardDisabled, navLinks } = props;
   return (
     <nav className="nav">
       <div className="nav__actions-top">
@@ -12,7 +13,7 @@ const NavigationElements = props => {
           icon="home"
           description={__('Home')}
           onClick={() => navigate('/discover')}
-          disabled={title === 'Discover'}
+          disabled={pageTitle === 'Discover'}
         />
         <div>
           <Button
@@ -47,33 +48,31 @@ const NavigationElements = props => {
         </ul>
         <hr />
         <ul className="nav__secondary">
-          {navLinks.secondary.map(({ label, path, active, icon, subLinks = [] }, index) => {
-            return (
-              <li
-                key={index}
-                className={classnames('nav__link nav__secondary-link', {
-                  'nav__link--active': active && !subLinks.length,
-                })}
-              >
-                <Button noStyle navigate={path} label={label} icon={icon} />
-                {!!subLinks.length &&
-                  active && (
-                    <ul>
-                      {subLinks.map(({ label, path, active }, index) => (
-                        <li
-                          key={index}
-                          className={classnames('nav__link nav__sub-link', {
-                            'nav__link--active': active,
-                          })}
-                        >
-                          <Button noStyle navigate={path} label={label} />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-              </li>
-            );
-          })}
+          {navLinks.secondary.map(({ label, path, active, icon, subLinks = [] }, index) => (
+            <li
+              key={index}
+              className={classnames('nav__link nav__secondary-link', {
+                'nav__link--active': active && !subLinks.length,
+              })}
+            >
+              <Button noStyle navigate={path} label={label} icon={icon} />
+              {!!subLinks.length &&
+                active && (
+                  <ul>
+                    {subLinks.map(({ label, path, active }, index) => (
+                      <li
+                        key={index}
+                        className={classnames('nav__link nav__sub-link', {
+                          'nav__link--active': active,
+                        })}
+                      >
+                        <Button noStyle navigate={path} label={label} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

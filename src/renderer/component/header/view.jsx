@@ -15,7 +15,6 @@ const Header = (props: Props) => {
   return (
     <header className="header">
       <WunderBar />
-
       <div className="header__actions-right">
         <Button
           inverse

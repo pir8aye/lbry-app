@@ -1,10 +1,13 @@
-// @flow
 import React from 'react';
 import Router from 'component/router/index';
 import Theme from 'component/theme';
 import ModalRouter from 'modal/modalRouter';
 import ReactModal from 'react-modal';
 import throttle from 'util/throttle';
+import WunderBar from 'component/wunderbar';
+import NavElements from 'component/navElements';
+import Header from 'component/header';
+import classnames from 'classnames';
 
 type Props = {
   alertError: (string | {}) => void,
@@ -78,11 +81,18 @@ class App extends React.PureComponent<Props> {
   mainContent: ?HTMLElement;
 
   render() {
+    const { pageTitle } = this.props;
     return (
       <div id="window">
         <Theme />
-        <Router />
-        <ModalRouter />
+        <main className="page">
+          <NavElements />
+          <Header />
+          <div className="content">
+            <Router />
+            <ModalRouter />
+          </div>
+        </main>
       </div>
     );
   }

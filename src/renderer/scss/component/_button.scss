@@ -62,7 +62,7 @@ Add <a> support (probably just get rid of button prefix)
 
 .btn.btn--inverse {
   background-color: transparent;
-  color: var(--btn-primary-bg);
+  color: var(--btn-inverse-color);
 }
 
 .btn.btn--link {
@@ -70,7 +70,7 @@ Add <a> support (probably just get rid of button prefix)
   margin: 0;
   background-color: inherit;
   font-size: 1em;
-  color: var(--btn-primary-bg); // this should be a different color
+  color: var(--btn-inverse-color); // this should be a different color
   border-radius: 0;
 
   &:hover {
