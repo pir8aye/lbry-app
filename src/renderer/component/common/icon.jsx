@@ -25,7 +25,7 @@ class Icon extends React.PureComponent<Props> {
   // }
 
   render() {
-    const { icon, color = "black", size = 14 } = this.props;
+    const { icon, size = 14 } = this.props;
     // const iconClassName = icon.startsWith('icon-') ? icon : `icon-${icon}`;
     // const title = this.getIconTitle();
     //
@@ -42,7 +42,7 @@ class Icon extends React.PureComponent<Props> {
     const Icon = Icons[icon];
 
     return Icon ? (
-      <Icon size={size}/>
+      <Icon size={size} className="icon" />
     ) : null; // throw an error if no icon?
     // return <span className={spanClassName} title={title} />;
   }

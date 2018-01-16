@@ -4,6 +4,7 @@ import lbryuri from 'lbryuri';
 import classnames from 'classnames';
 import Autocomplete from './internal/autocomplete';
 import throttle from 'util/throttle';
+import Icon from "component/common/icon";
 
 type Props = {
   updateSearchQuery: string => void,
@@ -91,6 +92,7 @@ class WunderBar extends React.PureComponent<Props> {
           'header__wunderbar--active': isActive,
         })}
       >
+        <Icon icon="Search" />
         <Autocomplete
           autoHighlight
           ref={ref => {

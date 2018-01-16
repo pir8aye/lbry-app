@@ -21,22 +21,30 @@
   display: flex;
   align-items: center;
   cursor: text;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    left: 10px;
+  }
 }
 
 .wunderbar__input {
-  height: 30px;
+  height: var(--btn-height);
+  border-radius: var(--btn-radius);
   width: 100%;
   color: var(--search-color);
   background-color: var(--search-bg-color);
   box-shadow: var(--box-shadow-layer);
   padding: 10px;
-  border-radius: 15px;
+  padding-left: 30px;
   font-size: 0.9em;
 
   &:focus {
-    // TODO: focus style
-    box-shadow: var(--search-active-shadow);
-    box-shadow: 0 6px 9px -2px #ccc;
+    background-color: var(--color-bg);
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-grey);
+    box-shadow: none;
   }
 }
 

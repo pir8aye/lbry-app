@@ -11,18 +11,21 @@ Add <a> support (probably just get rid of button prefix)
   font-weight: 600;
   padding: 10px;
   margin: 0 5px;
+  height: var(--btn-height);
+  min-width: var(--btn-height);
   border-radius: var(--btn-radius);
   color: var(--btn-primary-color);
   background-color: var(--btn-primary-bg);
   display: flex;
   align-items: center;
+  justify-content: center;
   fill: currentColor;
 
   &:hover {
     box-shadow: var(--box-shadow-layer);
   }
 
-  svg + .btn__label {
+  .icon + .btn__label {
     padding-left: 5px;
   }
 }
@@ -51,15 +54,6 @@ Add <a> support (probably just get rid of button prefix)
   &:disabled {
     color: var(--color-help);
     background-color: transparent;
-  }
-}
-
-.btn.btn--circle {
-  border-radius: 50%;
-  transition: all 0.2s;
-
-  &:hover:not([disabled]) {
-    border-radius: var(--btn-radius);
   }
 }
 

@@ -104,7 +104,7 @@ ul {
 .page {
   display: grid;
   grid-template-rows: var(--header-height) calc(100vh - var(--header-height));
-  grid-template-columns: 22vh auto;
+  grid-template-columns: 20vw auto;
   grid-template-areas:
     'nav header'
     'nav content';
@@ -139,11 +139,13 @@ ul {
 }
 
 .nav__link {
-  padding: 5px 0 $spacing-vertical * 2/3 $spacing-vertical * 2/3;
+  padding: 5px 0 0 $spacing-vertical * 2/3;
   font-weight: bold;
   color: var(--color-grey-dark);
 
-  &:hover:not(.nav__link--active) {
+  // The hover effect should be on the li
+  // Need to have the button grow
+  & .btn:hover {
     color: var(--color-black);
   }
 }
