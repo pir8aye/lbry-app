@@ -114,12 +114,12 @@ ul {
 .nav {
   grid-area: nav;
   background-color: var(--color-nav-bg);
-  padding-top: $spacing-vertical;
+  padding-top: 16px;
 
   hr {
     width: 40px;
-    height: 1px;
-    margin: $spacing-vertical * 2 $spacing-vertical $spacing-vertical;
+    border: solid 1px var(--color-grey);
+    margin: $spacing-vertical $spacing-vertical * 2/3 $spacing-vertical * 2;
   }
 }
 
@@ -130,17 +130,30 @@ ul {
   padding: 5px;
 }
 
-.nav__primary {
-  padding-top: $spacing-vertical * 3;
+.nav__actions-history {
+  display: flex;
 }
 
-.nav__link--active {
-  color: red;
+.nav__primary {
+  padding-top: $spacing-vertical * 3;
 }
 
 .nav__link {
   padding: 5px 0 $spacing-vertical * 2/3 $spacing-vertical * 2/3;
   font-weight: bold;
+  color: var(--color-grey-dark);
+
+  &:hover:not(.nav__link--active) {
+    color: var(--color-black);
+  }
+}
+
+.nav__link--active {
+  color: var(--color-black);
+}
+
+.nav__sub {
+  padding-top: 5px;
 }
 
 .nav__sub-link {

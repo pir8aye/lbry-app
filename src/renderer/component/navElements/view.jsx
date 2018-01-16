@@ -10,16 +10,16 @@ const NavigationElements = props => {
         <Button
           alt
           circle
-          icon="home"
+          icon="Home"
           description={__('Home')}
           onClick={() => navigate('/discover')}
           disabled={pageTitle === 'Discover'}
         />
-        <div>
+        <div className="nav__actions-history">
           <Button
             alt
             circle
-            icon="arrow-left"
+            icon="ArrowLeft"
             description={__('Navigate back')}
             onClick={back}
             disabled={isBackDisabled}
@@ -27,7 +27,7 @@ const NavigationElements = props => {
           <Button
             alt
             circle
-            icon="arrow-right"
+            icon="ArrowRight"
             description={__('Navigate forward')}
             onClick={forward}
             disabled={isForwardDisabled}
@@ -58,7 +58,7 @@ const NavigationElements = props => {
               <Button noStyle navigate={path} label={label} icon={icon} />
               {!!subLinks.length &&
                 active && (
-                  <ul>
+                  <ul className="nav__sub">
                     {subLinks.map(({ label, path, active }, index) => (
                       <li
                         key={index}

@@ -3,13 +3,28 @@ TODO:
 Determine [disabled] or .disabled
 Add <a> support (probably just get rid of button prefix)
 */
-
 .btn {
   border: none;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   font-weight: 600;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: var(--btn-radius);
+  color: var(--btn-primary-color);
+  background-color: var(--btn-primary-bg);
+  display: flex;
+  align-items: center;
+  fill: currentColor;
+
+  &:hover {
+    box-shadow: var(--box-shadow-layer);
+  }
+
+  svg + .btn__label {
+    padding-left: 5px;
+  }
 }
 
 .btn:disabled.btn--disabled {
@@ -21,21 +36,9 @@ Add <a> support (probably just get rid of button prefix)
   }
 }
 
-.btn {
-  padding: 10px;
-  margin: 0 5px;
-  border-radius: var(--btn-radius);
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-bg);
-
-  &:hover {
-    box-shadow: var(--box-shadow-layer);
-  }
-}
-
 .btn.btn--alt {
   color: var(--btn-alt-color);
-  background-color: #efefef;
+  background-color: var(--color-white);
 
   &:hover {
     color: #111;

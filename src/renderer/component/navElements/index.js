@@ -4,6 +4,7 @@ import {
   selectHistoryIndex,
   selectActiveHistoryEntry,
 } from 'redux/selectors/navigation';
+import { doNavigate, doHistoryBack, doHistoryForward } from 'redux/actions/navigation';
 import {
   selectIsBackDisabled,
   selectIsForwardDisabled,

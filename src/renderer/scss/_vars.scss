@@ -7,9 +7,9 @@ $width-page-constrained: 800px;
 :root {
   /* Colors */
   --color-white: #fff;
-  --color-black: #000;
-  --color-grey: #ccc;
-  --color-grey-dark: #d6d6d6;
+  --color-black: #000; // I shouldn't use color names like this
+  --color-grey: #d6d6d6;
+  --color-grey-dark: #8e8e8e;
   --color-primary: #44b098;
   --color-primary-dark: #2c6e60;
   --color-divider: #e3e3e3;
@@ -90,7 +90,7 @@ $width-page-constrained: 800px;
   --header-bg: var(--color-white);
   --header-color: var(--color-text);
   --header-active-color: rgba(0, 0, 0, 0.85);
-  --header-height: 65px;
+  --header-height: $spacing-vertical * 3;
   --header-button-bg: transparent; //var(--button-bg);
   --header-button-hover-bg: rgba(100, 100, 100, 0.15);
 

@@ -225,6 +225,10 @@
   align-items: center;
 }
 
+.card-row__scroll-btns {
+  display: flex;
+}
+
 .card-row__scrollhouse {
   padding-top: $spacing-vertical * 2/3;
   overflow: hidden;

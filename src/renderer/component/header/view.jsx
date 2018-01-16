@@ -19,20 +19,20 @@ const Header = (props: Props) => {
         <Button
           inverse
           onClick={() => navigate('/wallet')}
-          icon="user"
+          icon="User"
           label={isUpgradeAvailable ? `${balance} LBC` : `You have ${balance} LBC`}
           description={__('Your wallet')}
         />
 
         <Button
           onClick={() => navigate('/publish')}
-          icon="cloud-upload"
+          icon="UploadCloud"
           label={isUpgradeAvailable ? '' : __('Publish')}
           description={__('Publish content')}
         />
 
         {isUpgradeAvailable && (
-          <Button onClick={() => downloadUpgrade()} icon="arrow-up" label={__('Upgrade App')} />
+          <Button onClick={() => downloadUpgrade()} icon="Download" label={__('Upgrade App')} />
         )}
       </div>
     </header>

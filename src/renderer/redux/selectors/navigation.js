@@ -55,7 +55,7 @@ export const selectPageTitle = createSelector(
         return parts.join('?');
       }
       case 'discover':
-        return __('Discover');
+        return __('Explore New Content');
       case 'subscriptions':
         return __('Your Subscriptions');
       case 'wallet':
@@ -135,13 +135,13 @@ export const selectNavLinks = createSelector(
           label: 'Explore',
           path: '/discover',
           active: page === 'discover',
-          icon: 'compass',
+          icon: 'Globe',
         },
         {
           label: 'Subscriptions',
           path: '/subscriptions',
           active: page === 'subscriptions',
-          icon: 'at',
+          icon: 'AtSign',
         },
       ],
       secondary: [
@@ -150,25 +150,25 @@ export const selectNavLinks = createSelector(
           path: walletLink || '/wallet',
           active: page === 'wallet' || !!walletSubLinks.find(({ path }) => page === path.slice(1)),
           subLinks: walletSubLinks,
-          icon: 'bank',
+          icon: 'CreditCard',
         },
         {
           label: 'Publish',
           path: '/publish',
           active: page === 'publish',
-          icon: 'cloud-upload',
+          icon: 'UploadCloud',
         },
         {
           label: 'Settings',
           path: '/settings',
           active: page === 'settings',
-          icon: 'gear',
+          icon: 'Settings',
         },
         {
           label: 'Help',
           path: '/help',
           active: page === 'help',
-          icon: 'question',
+          icon: 'HelpCircle',
         },
       ],
     };
