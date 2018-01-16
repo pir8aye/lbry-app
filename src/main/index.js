@@ -63,8 +63,8 @@ app.on('activate', () => {
 });
 
 app.on('will-quit', () => {
-  if (daemon !== null) daemon.quit();
   isQuitting = true;
+  if (daemon !== null) daemon.quit();
 });
 
 // https://electronjs.org/docs/api/app#event-will-finish-launching
@@ -98,6 +98,7 @@ ipcMain.on('set-auth-token', (event, token) => {
 
 process.on('uncaughtException', error => {
   dialog.showErrorBox('Error Encountered', `Caught error: ${error}`);
+  isQuitting = true;
   if (daemon !== null) daemon.quit();
   app.exit(1);
 });
@@ -109,10 +110,11 @@ const isSecondInstance = app.makeSingleInstance(argv => {
   if (process.platform === 'win32') {
     // Keep only command line / deep linked arguments
     const URI = argv[1].replace(/\/$/, '').replace('/#', '#');
+    dialog.showErrorBox(String(rendererWindow), String(URI));
     rendererWindow.webContents.send('open-uri-requested', URI);
   }
 
-  if (rendererWindow) {
+  if (rendererWindow !== null) {
     if (rendererWindow.isMinimized()) rendererWindow.restore();
     rendererWindow.focus();
   }
