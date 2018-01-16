@@ -69,6 +69,7 @@ Add <a> support (probably just get rid of button prefix)
   font-size: 1em;
   color: var(--btn-inverse-color); // this should be a different color
   border-radius: 0;
+  height: auto;
 
   &:hover {
     border-bottom: 1px solid;

@@ -118,7 +118,8 @@ class WunderBar extends React.PureComponent<Props> {
                 'wunderbar__active-suggestion': isHighlighted,
               })}
             >
-              {item.label}
+              <Icon icon={item.icon} />
+              <span className="wunderbar__suggestion-label">{item.label}</span>
             </div>
           )}
         />

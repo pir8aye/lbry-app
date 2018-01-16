@@ -94,7 +94,7 @@ class UriIndicator extends React.PureComponent<Props> {
     }
 
     return (
-      <Button navigate="/show" navigateParams={{ uri: channelLink }} fakeLink>
+      <Button navigate="/show" navigateParams={{ uri: channelLink }} noStyle>
         {inner}
       </Button>
     );
