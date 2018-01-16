@@ -13,7 +13,6 @@ let rendererWindow;
 let tray;
 let daemon;
 
-// Deep linked URI
 let deepLinkingURI;
 let isQuitting;
 
@@ -107,14 +106,16 @@ process.on('uncaughtException', error => {
 const isSecondInstance = app.makeSingleInstance(argv => {
   // Protocol handler for win32
   // argv: An array of the second instance’s (command line / deep linked) arguments
+
+  let URI;
   if (process.platform === 'win32') {
     // Keep only command line / deep linked arguments
-    const URI = argv[1].replace(/\/$/, '').replace('/#', '#');
-    dialog.showErrorBox(String(rendererWindow), String(URI));
-    rendererWindow.webContents.send('open-uri-requested', URI);
+    URI = argv[1].replace(/\/$/, '').replace('/#', '#');
   }
 
   if (rendererWindow !== null) {
+    rendererWindow.webContents.send('open-uri-requested', URI);
+
     if (rendererWindow.isMinimized()) rendererWindow.restore();
     rendererWindow.focus();
   }
