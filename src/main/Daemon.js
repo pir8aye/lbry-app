@@ -14,7 +14,11 @@ export default class Daemon {
   launch() {
     // Kill any running daemon on Windows. This is necessary on Windows after an installation.
     if (process.platform === 'win32') {
-      execSync('taskkill /im lbrynet-daemon.exe /t /f');
+      try {
+        execSync('taskkill /im lbrynet-daemon.exe /t /f');
+      } catch (error) {
+        console.warn(error);
+      }
     }
 
     console.log('Launching daemon:', Daemon.path);
@@ -28,7 +32,11 @@ export default class Daemon {
 
   quit() {
     if (process.platform === 'win32') {
-      execSync(`taskkill /pid ${this.subprocess.pid} /t /f`);
+      try {
+        execSync(`taskkill /pid ${this.subprocess.pid} /t /f`);
+      } catch (error) {
+        console.warn(error);
+      }
     } else {
       this.subprocess.kill();
     }
