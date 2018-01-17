@@ -174,7 +174,7 @@ const isSecondInstance = app.makeSingleInstance(argv => {
   // argv: An array of the second instance’s (command line / deep linked) arguments
 
   let URI;
-  if (process.platform === 'win32' && String(process.argv[1]).startsWith('lbry')) {
+  if (process.platform === 'win32' && String(argv[1]).startsWith('lbry')) {
     // Keep only command line / deep linked arguments
     URI = argv[1].replace(/\/$/, '').replace('/#', '#');
   }
@@ -186,6 +186,7 @@ const isSecondInstance = app.makeSingleInstance(argv => {
     rendererWindow.focus();
   } else {
     deepLinkingURI = URI;
+    createWindow(deepLinkingURI);
   }
 });
 
