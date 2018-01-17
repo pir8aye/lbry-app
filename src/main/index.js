@@ -61,7 +61,7 @@ app.on('ready', async () => {
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (rendererWindow === null) createWindow();
+  if (rendererWindow) createWindow();
 });
 
 app.on('will-quit', () => {
@@ -80,11 +80,13 @@ app.on('will-finish-launching', () => {
       rendererWindow.focus();
     } else {
       deepLinkingURI = URL;
+      rendererWindow = createWindow(deepLinkingURI);
     }
   });
 });
 
 app.on('window-all-closed', () => {
+  rendererWindow = null;
   // Subscribe to event so the app doesn't quit when closing the window.
 });
 
@@ -186,10 +188,10 @@ const isSecondInstance = app.makeSingleInstance(argv => {
     rendererWindow.focus();
   } else {
     deepLinkingURI = URI;
-    createWindow(deepLinkingURI);
+    rendererWindow = createWindow(deepLinkingURI);
   }
 });
 
 if (isSecondInstance) {
-  app.quit();
+  app.exit();
 }

@@ -36,7 +36,7 @@ export default macDeepLinkingURI => {
   let deepLinkingURI;
   // Protocol handler for win32
   if (
-    !deepLinkingURI &&
+    !macDeepLinkingURI &&
     process.platform === 'win32' &&
     String(process.argv[1]).startsWith('lbry')
   ) {
