@@ -16,7 +16,6 @@ let rendererWindow;
 let tray;
 let daemon;
 
-let deepLinkingURI;
 let isQuitting;
 
 const installExtensions = async () => {
@@ -54,7 +53,7 @@ app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development') {
     await installExtensions();
   }
-  rendererWindow = createWindow(deepLinkingURI);
+  rendererWindow = createWindow();
   tray = createTray(rendererWindow);
 });
 
@@ -79,8 +78,7 @@ app.on('will-finish-launching', () => {
       if (rendererWindow.isMinimized()) rendererWindow.restore();
       rendererWindow.focus();
     } else {
-      deepLinkingURI = URL;
-      rendererWindow = createWindow(deepLinkingURI);
+      rendererWindow = createWindow(URL);
     }
   });
 });
@@ -187,8 +185,7 @@ const isSecondInstance = app.makeSingleInstance(argv => {
     if (rendererWindow.isMinimized()) rendererWindow.restore();
     rendererWindow.focus();
   } else {
-    deepLinkingURI = URI;
-    rendererWindow = createWindow(deepLinkingURI);
+    rendererWindow = createWindow(URI);
   }
 });
 
