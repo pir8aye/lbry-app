@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'component/link';
-import { CreditAmount } from 'component/common';
+import CreditAmount from 'component/common/credit-amount';
 
 const WalletBalance = props => {
   const { balance, navigate } = props;

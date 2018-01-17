@@ -19,7 +19,7 @@ Add <a> support (probably just get rid of button prefix)
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: currentColor;
+  fill: currentColor; // for proper icon color
 
   &:hover {
     box-shadow: var(--box-shadow-layer);
@@ -27,15 +27,6 @@ Add <a> support (probably just get rid of button prefix)
 
   .icon + .btn__label {
     padding-left: 5px;
-  }
-}
-
-.btn:disabled.btn--disabled {
-  cursor: default;
-  background-color: transparent;
-
-  &:hover {
-    box-shadow: none;
   }
 }
 
@@ -60,6 +51,10 @@ Add <a> support (probably just get rid of button prefix)
 .btn.btn--inverse {
   background-color: transparent;
   color: var(--btn-inverse-color);
+
+  &:hover {
+    background-color: var(--btn-inverse-bg);
+  }
 }
 
 .btn.btn--link {
@@ -67,9 +62,8 @@ Add <a> support (probably just get rid of button prefix)
   margin: 0;
   background-color: inherit;
   font-size: 1em;
-  color: var(--btn-inverse-color); // this should be a different color
+  color: var(--btn-inverse-color);
   border-radius: 0;
-  height: auto;
 
   &:hover {
     border-bottom: 1px solid;
@@ -83,11 +77,12 @@ Add <a> support (probably just get rid of button prefix)
   color: inherit;
   background-color: inherit;
   border-radius: 0;
-  padding: 0;
+  padding: 5px 0;
   margin: 0;
 
   &:hover {
     box-shadow: none;
+    color: var(--color-primary);
   }
 }
 
@@ -97,8 +92,20 @@ Add <a> support (probably just get rid of button prefix)
 
 .btn--link,
 .btn--no-style {
+  height: auto;
+
   .btn__label {
     padding: 0;
+  }
+}
+
+
+.btn.btn--disabled:disabled {
+  cursor: default;
+  background-color: transparent;
+
+  &:hover {
+    box-shadow: none;
   }
 }
 

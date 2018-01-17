@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'modal/modal';
-import { CreditAmount } from 'component/common';
+import CreditAmount from 'component/common/credit-amount';
 
 class ModalFirstReward extends React.PureComponent {
   render() {

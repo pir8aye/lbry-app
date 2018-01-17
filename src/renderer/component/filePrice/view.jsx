@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreditAmount } from 'component/common';
+import CreditAmount from 'component/common/credit-amount';
 
 class FilePrice extends React.PureComponent {
   componentWillMount() {
@@ -24,7 +24,7 @@ class FilePrice extends React.PureComponent {
     const isEstimate = costInfo ? !costInfo.includesData : null;
 
     if (!costInfo) {
-      return <span className={`credit-amount credit-amount--${look}`}>???</span>;
+      return <span className="credit-amount">???</span>;
     }
 
     return (

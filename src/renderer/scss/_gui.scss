@@ -1,7 +1,6 @@
 // Generic html styles used accross the App
 // component specific styling should go in the component scss file
 
-// The actual fonts used will change ex: medium vs regular
 @font-face {
   font-family: 'Metropolis';
   font-weight: normal;
@@ -71,19 +70,6 @@ h5 {
   font-size: 1.1em;
 }
 
-// sup,
-// sub {
-//   vertical-align: baseline;
-//   position: relative;
-// }
-//
-// sup {
-//   top: -0.4em;
-// }
-// sub {
-//   top: 0.4em;
-// }
-
 code {
   font: 0.8em Consolas, 'Lucida Console', 'Source Sans', monospace;
   background-color: var(--color-bg-alt);
@@ -104,7 +90,7 @@ ul {
 .page {
   display: grid;
   grid-template-rows: var(--header-height) calc(100vh - var(--header-height));
-  grid-template-columns: 20vw auto;
+  grid-template-columns: 170px auto;
   grid-template-areas:
     'nav header'
     'nav content';
@@ -145,19 +131,32 @@ ul {
   color: var(--text-selection-color);
 }
 
-.credit-amount--indicator {
-  font-weight: 500;
-  color: var(--color-money);
-}
-
-.credit-amount--fee {
-  font-size: 0.9em;
-  color: var(--color-meta-light);
-}
-
-.credit-amount--bold {
+.credit-amount {
+  padding: 5px;
+  border-radius: 5px;
   font-weight: 700;
+  font-size: .7em;
 }
+
+.credit-amount--free {
+  color: var(--color-black);
+  background-color: var(--color-secondary);
+}
+
+.credit-amount--cost {
+  color: var(--color-black);
+  background-color: var(--color-third);
+}
+
+//
+// .credit-amount--fee {
+//   font-size: 0.9em;
+//   color: var(--color-meta-light);
+// }
+//
+// .credit-amount--bold {
+//   font-weight: 700;
+// }
 
 .hidden {
   display: none;

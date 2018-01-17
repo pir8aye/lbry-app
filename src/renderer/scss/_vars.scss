@@ -13,6 +13,7 @@ $width-page-constrained: 800px;
   --color-primary: #44b098;
   --color-primary-dark: #2c6e60;
   --color-secondary: #6afbda;
+  --color-third: #fbd55e;
   --color-divider: #e3e3e3;
 
   --text-color: var(--color-black);
@@ -84,6 +85,7 @@ $width-page-constrained: 800px;
   --button-alt-color: var(--text-color);
   --btn-primary-bg: var(--color-primary-dark);
   --btn-inverse-color: var(--color-primary-dark);
+  --btn-inverse-bg: var(--color-white);
   --btn-radius: 20px;
   --btn-height: 40px;
 

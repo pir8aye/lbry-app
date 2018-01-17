@@ -6,6 +6,7 @@
   overflow: auto;
   user-select: text;
   display: flex;
+  position: relative;
 }
 
 .card--placeholder {
@@ -14,7 +15,6 @@
 
 .card--small {
   width: var(--card-small-width);
-  min-height: var(--card-small-width);
   overflow-x: hidden;
   white-space: normal;
 }
@@ -58,6 +58,12 @@
   color: var(--color-help);
   font-size: 0.85em;
   padding-top: $spacing-vertical * 1/3;
+}
+
+.card__internal-links {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 // .card__title-primary .meta {
@@ -137,57 +143,7 @@
 //   font-weight: 600;
 // }
 //
-//
-// .card__media--autothumb {
-//   position: relative;
-// }
-// .card__media--autothumb.purple {
-//   background-color: #9c27b0;
-// }
-// .card__media--autothumb.red {
-//   background-color: #e53935;
-// }
-// .card__media--autothumb.pink {
-//   background-color: #e91e63;
-// }
-// .card__media--autothumb.indigo {
-//   background-color: #3f51b5;
-// }
-// .card__media--autothumb.blue {
-//   background-color: #2196f3;
-// }
-// .card__media--autothumb.light-blue {
-//   background-color: #039be5;
-// }
-// .card__media--autothumb.cyan {
-//   background-color: #00acc1;
-// }
-// .card__media--autothumb.teal {
-//   background-color: #009688;
-// }
-// .card__media--autothumb.green {
-//   background-color: #43a047;
-// }
-// .card__media--autothumb.yellow {
-//   background-color: #ffeb3b;
-// }
-// .card__media--autothumb.orange {
-//   background-color: #ffa726;
-// }
-//
-// .card__media--autothumb .card__autothumb__text {
-//   font-size: 2em;
-//   width: 100%;
-//   color: #ffffff;
-//   text-align: center;
-//   position: absolute;
-//   top: 36%;
-// }
-//
-// .card--form {
-//   width: calc(var(--input-width) + var(--card-padding) * 2);
-// }
-//
+
 
 //
 // .card-series-submit {
@@ -198,7 +154,7 @@
 // }
 
 /*
- .card-row is used on the discover page
+ .card-row is used on the discover/subscriptions page
  It is a list of cards that extend past the right edge of the screen
  There are left/right arrows to scroll the cards and view hidden content
 */
@@ -211,6 +167,10 @@
 
   &:first-of-type {
     padding-top: $spacing-vertical * 2/3;
+  }
+
+  &:last-of-type {
+    padding-bottom: $spacing-vertical * 2/3;
   }
 }
 
@@ -241,6 +201,7 @@
     display: inline-block;
     vertical-align: top;
     margin-left: $spacing-vertical * 2/3;
+    overflow: visible;
   }
 
   .card:last-of-type {

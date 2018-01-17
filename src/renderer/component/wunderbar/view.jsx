@@ -23,22 +23,22 @@ class WunderBar extends React.PureComponent<Props> {
     (this: any).handleSubmit = this.handleSubmit.bind(this);
     (this: any).handleChange = this.handleChange.bind(this);
     (this: any).focus = this.focus.bind(this);
-    (this: any).updateAutoComplete = throttle(this.getSTuff, 750);
+    (this: any).throttledGetSearchSuggestions = throttle(this.getSearchSuggestions, 1000);
     this.input = undefined;
   }
 
   input: ?HTMLInputElement;
+  throttledGetSearchSuggestions: (string) => void;
 
   handleChange(e: SyntheticInputEvent<*>) {
     const { updateSearchQuery, getSearchSuggestions } = this.props;
     const { value } = e.target;
 
     updateSearchQuery(value);
-    this.updateAutoComplete(value);
+    this.throttledGetSearchSuggestions(value);
   }
 
-  // thottled by 100ms
-  getSTuff(value: string) {
+  getSearchSuggestions(value: string) {
     const { getSearchSuggestions } = this.props;
     getSearchSuggestions(value);
   }
@@ -98,7 +98,7 @@ class WunderBar extends React.PureComponent<Props> {
           ref={ref => {
             this.input = ref;
           }}
-          wrapperStyle={{ flex: 1, minHeight: 0 }}
+          wrapperStyle={{ flex: 1 }}
           value={wunderbarValue}
           items={suggestions}
           getItemValue={item => item.value}

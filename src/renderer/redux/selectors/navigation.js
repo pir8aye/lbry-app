@@ -31,6 +31,11 @@ export const selectIsForwardDisabled = createSelector(
   state => state.index === state.stack.length - 1
 );
 
+export const selectIsHome = createSelector(
+  selectCurrentPage,
+  (page) => page === 'discover'
+)
+
 export const selectHistoryIndex = createSelector(selectState, state => state.index);
 
 export const selectHistoryStack = createSelector(selectState, state => state.stack);

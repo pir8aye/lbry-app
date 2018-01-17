@@ -3,7 +3,7 @@ import Button from 'component/link';
 import classnames from 'classnames';
 
 const NavigationElements = props => {
-  const { pageTitle, navigate, back, forward, isBackDisabled, isForwardDisabled, navLinks } = props;
+  const { pageTitle, navigate, back, forward, isBackDisabled, isForwardDisabled, isHome, navLinks } = props;
   return (
     <nav className="nav">
       <div className="nav__actions-top">
@@ -12,7 +12,7 @@ const NavigationElements = props => {
           icon="Home"
           description={__('Home')}
           onClick={() => navigate('/discover')}
-          disabled={pageTitle === 'Discover'}
+          disabled={isHome}
         />
         <div className="nav__actions-history">
           <Button
@@ -52,7 +52,7 @@ const NavigationElements = props => {
                 'nav__link--active': active && !subLinks.length,
               })}
             >
-              <Button noStyle block navigate={path} label={label} icon={icon} />
+              <Button noStyle navigate={path} label={label} icon={icon} />
               {!!subLinks.length &&
                 active && (
                   <ul className="nav__sub">

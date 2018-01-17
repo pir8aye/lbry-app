@@ -30,6 +30,7 @@
 }
 
 .header__wunderbar {
+  z-index: 1;
   flex: 1;
   min-width: 175px;
   overflow: visible;
@@ -56,6 +57,9 @@
   padding: 10px;
   padding-left: 30px;
   font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     background-color: var(--color-bg);
@@ -65,12 +69,18 @@
   }
 }
 
+.wunderbar__menu {
+  max-width: 100px;
+  overflow-x: hidden;
+}
+
 .wunderbar__suggestion {
   padding: 10px;
   background-color: var(--header-bg);
   cursor: pointer;
   display: flex;
   align-items: center;
+  text-overflow: ellipsis;
 
   &:not(:first-of-type) {
     border-top: 1px solid var(--color-divider);

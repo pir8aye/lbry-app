@@ -8,6 +8,7 @@ import { doNavigate, doHistoryBack, doHistoryForward } from 'redux/actions/navig
 import {
   selectIsBackDisabled,
   selectIsForwardDisabled,
+  selectIsHome,
   selectCurrentPage,
   selectNavLinks,
 } from 'redux/selectors/navigation';
@@ -24,6 +25,7 @@ const select = (state, props) => ({
   navLinks: selectNavLinks(state),
   isBackDisabled: selectIsBackDisabled(state),
   isForwardDisabled: selectIsForwardDisabled(state),
+  isHome: selectIsHome(state)
 });
 
 const perform = dispatch => ({

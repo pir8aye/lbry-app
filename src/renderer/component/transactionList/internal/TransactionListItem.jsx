@@ -1,6 +1,6 @@
 import React from 'react';
 import LinkTransaction from 'component/linkTransaction';
-import { CreditAmount } from 'component/common';
+import CreditAmount from 'component/common/credit-amount';
 import DateTime from 'component/dateTime';
 import Link from 'component/link';
 import lbryuri from 'lbryuri';

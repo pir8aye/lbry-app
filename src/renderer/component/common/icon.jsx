@@ -6,11 +6,11 @@ import * as Icons from 'react-feather';
 
 type Props = {
   icon: string,
-  color: string,
-  size: number,
+  color?: string,
+  size?: number,
 };
 
-class Icon extends React.PureComponent<Props> {
+class IconComponent extends React.PureComponent<Props> {
   // getIconTitle() {
   //   const { icon } = this.props;
   //
@@ -25,27 +25,10 @@ class Icon extends React.PureComponent<Props> {
   // }
 
   render() {
-    const { icon, size = 14 } = this.props;
-    // const iconClassName = icon.startsWith('icon-') ? icon : `icon-${icon}`;
-    // const title = this.getIconTitle();
-    //
-    // const spanClassName = classnames(
-    //   {
-    //     'icon--fixed-width': fixed,
-    //     'icon--padded': padded,
-    //   },
-    //   iconClassName
-    // );
-
-
-
+    const { icon, size = 14, color } = this.props;
     const Icon = Icons[icon];
-
-    return Icon ? (
-      <Icon size={size} className="icon" />
-    ) : null; // throw an error if no icon?
-    // return <span className={spanClassName} title={title} />;
+    return Icon ? <Icon size={size} color={color} className="icon" /> : null;
   }
 }
 
-export default Icon;
+export default IconComponent;

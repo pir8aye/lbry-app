@@ -1,5 +1,6 @@
 import React from 'react';
-import { CreditAmount, Icon } from 'component/common';
+import CreditAmount from 'component/common/credit-amount';
+import Icon from 'component/common/Icon';
 import RewardLink from 'component/rewardLink';
 import Link from 'component/link';
 import rewards from 'rewards';
