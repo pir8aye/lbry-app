@@ -21,7 +21,7 @@ export default rendererWindow => {
   const tray = new Tray(iconPath);
 
   tray.on('double-click', () => {
-    if (!rendererWindow) {
+    if (!rendererWindow || rendererWindow.isDestroyed()) {
       createWindow();
     } else {
       rendererWindow.show();
@@ -34,7 +34,7 @@ export default rendererWindow => {
     {
       label: `Open ${app.getName()}`,
       click() {
-        if (!rendererWindow) {
+        if (!rendererWindow || rendererWindow.isDestroyed()) {
           createWindow();
         } else {
           rendererWindow.show();
