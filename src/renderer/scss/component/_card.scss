@@ -144,7 +144,6 @@
 // }
 //
 
-
 //
 // .card-series-submit {
 //   margin-left: auto;
@@ -205,7 +204,7 @@
   }
 
   .card:last-of-type {
-    padding-right: $spacing-vertical * 2/3;
+    margin-right: $spacing-vertical * 2/3;
   }
 }
 
