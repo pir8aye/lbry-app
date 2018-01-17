@@ -35,7 +35,11 @@ export default macDeepLinkingURI => {
 
   let deepLinkingURI;
   // Protocol handler for win32
-  if (!deepLinkingURI && process.platform === 'win32' && process.argv[1].startsWith('lbry')) {
+  if (
+    !deepLinkingURI &&
+    process.platform === 'win32' &&
+    String(process.argv[1]).startsWith('lbry')
+  ) {
     // Keep only command line / deep linked arguments
     // Windows normalizes URIs when they're passed in from other apps. On Windows, this tries to
     // restore the original URI that was typed.
