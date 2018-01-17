@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import path from 'path';
-import { spawn } from 'child_process';
+import { spawn, exec } from 'child_process';
 
 export default class Daemon {
   static path = process.env.LBRY_DAEMON || path.join(__static, 'daemon/lbrynet-daemon');
@@ -12,6 +12,11 @@ export default class Daemon {
   }
 
   launch() {
+    // Kill any running daemon on Windows. This is necessary on Windows after an installation.
+    if (process.platform === 'win32') {
+      exec('taskkill /im lbrynet-daemon.exe /t /f');
+    }
+
     console.log('Launching daemon:', Daemon.path);
     this.subprocess = spawn(Daemon.path);
 
@@ -22,7 +27,11 @@ export default class Daemon {
   }
 
   quit() {
-    this.subprocess.kill();
+    if (process.platform === 'win32') {
+      exec(`taskkill /pid ${this.subprocess.pid} /t /f`);
+    } else {
+      this.subprocess.kill();
+    }
   }
 
   // Follows the publish/subscribe pattern

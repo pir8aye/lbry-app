@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 // Module imports
 import keytar from 'keytar-prebuild';
-import { app, ipcMain, dialog } from 'electron';
+import SemVer from 'semver';
+import url from 'url';
+import https from 'https';
+import { shell, app, ipcMain, dialog } from 'electron';
 import Daemon from './Daemon';
 import createTray from './createTray';
 import createWindow from './createWindow';
@@ -83,6 +86,69 @@ app.on('will-finish-launching', () => {
 
 app.on('window-all-closed', () => {
   // Subscribe to event so the app doesn't quit when closing the window.
+});
+
+ipcMain.on('upgrade', (event, installerPath) => {
+  app.on('quit', () => {
+    console.log('Launching upgrade installer at', installerPath);
+    // This gets triggered called after *all* other quit-related events, so
+    // we'll only get here if we're fully prepared and quitting for real.
+    shell.openItem(installerPath);
+  });
+  // what to do if no shutdown in a long time?
+  console.log('Update downloaded to', installerPath);
+  console.log(
+    'The app will close, and you will be prompted to install the latest version of LBRY.'
+  );
+  console.log('After the install is complete, please reopen the app.');
+  app.quit();
+});
+
+ipcMain.on('version-info-requested', () => {
+  function formatRc(ver) {
+    // Adds dash if needed to make RC suffix SemVer friendly
+    return ver.replace(/([^-])rc/, '$1-rc');
+  }
+
+  const localVersion = app.getVersion();
+  const latestReleaseAPIURL = 'https://api.github.com/repos/lbryio/lbry-app/releases/latest';
+  const opts = {
+    headers: {
+      'User-Agent': `LBRY/${localVersion}`,
+    },
+  };
+  let result = '';
+
+  const req = https.get(Object.assign(opts, url.parse(latestReleaseAPIURL)), res => {
+    res.on('data', data => {
+      result += data;
+    });
+    res.on('end', () => {
+      const tagName = JSON.parse(result).tag_name;
+      const [, remoteVersion] = tagName.match(/^v([\d.]+(?:-?rc\d+)?)$/);
+      if (!remoteVersion) {
+        if (rendererWindow) {
+          rendererWindow.webContents.send('version-info-received', null);
+        }
+      } else {
+        const upgradeAvailable = SemVer.gt(formatRc(remoteVersion), formatRc(localVersion));
+        if (rendererWindow) {
+          rendererWindow.webContents.send('version-info-received', {
+            remoteVersion,
+            localVersion,
+            upgradeAvailable,
+          });
+        }
+      }
+    });
+  });
+
+  req.on('error', err => {
+    console.log('Failed to get current version from GitHub. Error:', err);
+    if (rendererWindow) {
+      rendererWindow.webContents.send('version-info-received', null);
+    }
+  });
 });
 
 ipcMain.on('get-auth-token', event => {

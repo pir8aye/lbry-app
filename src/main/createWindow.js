@@ -81,8 +81,8 @@ export default macDeepLinkingURI => {
   });
 
   window.webContents.on('did-finish-load', () => {
-    window.webContents.session.setUserAgent(`LBRY/${app.getVersion()}`);
     window.webContents.send('open-uri-requested', deepLinkingURI, true);
+    window.webContents.session.setUserAgent(`LBRY/${app.getVersion()}`);
     if (process.env.NODE_ENV === 'development') {
       window.webContents.openDevTools();
     }

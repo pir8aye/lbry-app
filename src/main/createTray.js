@@ -19,6 +19,15 @@ export default rendererWindow => {
   }
 
   const tray = new Tray(iconPath);
+
+  tray.on('double-click', () => {
+    if (rendererWindow.isDestroyed()) {
+      createWindow();
+    } else {
+      rendererWindow.show();
+    }
+  });
+
   tray.setToolTip('LBRY App');
 
   const template = [
@@ -36,14 +45,6 @@ export default rendererWindow => {
   ];
   const contextMenu = Menu.buildFromTemplate(template);
   tray.setContextMenu(contextMenu);
-
-  tray.on('double-click', () => {
-    if (rendererWindow.isDestroyed()) {
-      createWindow();
-    } else {
-      rendererWindow.show();
-    }
-  });
 
   return tray;
 };
