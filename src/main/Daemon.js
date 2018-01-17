@@ -17,7 +17,7 @@ export default class Daemon {
       try {
         execSync('taskkill /im lbrynet-daemon.exe /t /f');
       } catch (error) {
-        console.warn(error);
+        console.warn(error.message);
       }
     }
 
@@ -35,7 +35,7 @@ export default class Daemon {
       try {
         execSync(`taskkill /pid ${this.subprocess.pid} /t /f`);
       } catch (error) {
-        console.warn(error);
+        console.error(error.message);
       }
     } else {
       this.subprocess.kill();
